@@ -267,7 +267,8 @@
   }
 </style>
 
-<style>/*skillsets*/
+<style>
+  /* Skillsets */
   .systems-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -277,9 +278,11 @@
   }
 
   .systems-grid img {
-    max-height: 60px;
-    object-fit: contain;
+    width: 100px;        /* Fixed width */
+    height: 60px;        /* Fixed height */
+    object-fit: contain; /* Keep aspect ratio */
     transition: transform 0.3s ease;
+    display: block;
   }
 
   .systems-grid img:hover {
@@ -290,8 +293,13 @@
     .systems-grid {
       gap: 1.5rem;
     }
+    .systems-grid img {
+      width: 80px;
+      height: 50px;
+    }
   }
 </style>
+
 
 
 </head>
@@ -472,15 +480,15 @@
     
     <div class="systems-grid">
 <img src="https://cdn.worldvectorlogo.com/logos/asana-1.svg" alt="Asana" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Monday.com_logo.png" alt="Monday.com" />
-<img src="https://cdn.worldvectorlogo.com/logos/trello.svg" alt="Trello" />
-<img src="https://upload.wikimedia.org/wikipedia/en/5/5b/Mailchimp_Logo_2018.svg" alt="Mailchimp" />
-<img src="https://seeklogo.com/images/M/mailerlite-logo-FA94C19C18-seeklogo.com.png" alt="MailerLite" />
+<img src="pics/monday.png" alt="Monday.com" />
+<img src="pics/trello.png" alt="Trello" />
+<img src="pics/Mailchimp.jpg" alt="Mailchimp" />
+<img src="pics/mailer lite.png" alt="MailerLite" />
 <img src="https://cdn.worldvectorlogo.com/logos/squarespace.svg" alt="Squarespace" />
-<img src="https://seeklogo.com/images/K/kajabi-logo-1090BCF05A-seeklogo.com.png" alt="Kajabi" />
+<img src="pics/kajabi.jpg" alt="Kajabi" />
 <img src="https://cdn.worldvectorlogo.com/logos/vimeo-icon.svg" alt="Vimeo" />
-<img src="https://seeklogo.com/images/F/filmora-logo-B2B28DB634-seeklogo.com.png" alt="Filmora" />
-<img src="https://seeklogo.com/images/C/canva-logo-500x500-B4BE7C5B50-seeklogo.com.png" alt="Canva" />
+<img src="pics/filmora_logo.png" alt="Filmora" />
+<img src="pics/canva.png" alt="Canva" />
 <img src="https://cdn.worldvectorlogo.com/logos/google-g-2015.svg" alt="Google Workspace" />
 <img src="https://cdn.worldvectorlogo.com/logos/zapier.svg" alt="Zapier" />
 
