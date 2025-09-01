@@ -61,33 +61,57 @@
     }
 
     /* Hero Section */
-    header {
-      position: relative;
-      min-height: 88vh;
-      display: grid;
-      align-items: center;
-      color: white;
-      padding: 8rem 0 6rem;
-      overflow: clip;
-      background:
-        radial-gradient(1200px 600px at -10% -20%, rgba(79,70,229,0.35), transparent 60%),
-        radial-gradient(1000px 480px at 110% 20%, rgba(59,130,246,0.35), transparent 55%),
-        linear-gradient(rgba(15,23,42,0.55), rgba(15,23,42,0.55)),
-        url('https://images.unsplash.com/photo-1573497019511-7d4b2a7a6c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    }
-    /* subtle shapes */
-    header::before, header::after{
-      content:"";
-      position:absolute; inset: -20%;
-      background: radial-gradient(closest-side, rgba(255,255,255,0.09), transparent);
-      filter: blur(40px);
-      transform: rotate(8deg);
-      pointer-events: none;
-    }
-    header::after{
-      transform: rotate(-12deg);
-      opacity: .7;
-    }
+/* Hero Section */
+header {
+  position: relative;
+  min-height: 88vh;
+  display: grid;
+  align-items: center;
+  color: white;
+  padding: 8rem 0 6rem;
+  overflow: clip;
+  background:
+    radial-gradient(1200px 600px at -10% -20%, rgba(79,70,229,0.35), transparent 60%),
+    radial-gradient(1000px 480px at 110% 20%, rgba(59,130,246,0.35), transparent 55%),
+    linear-gradient(rgba(15,23,42,0.55), rgba(15,23,42,0.55)),
+    url('https://images.unsplash.com/photo-1573497019511-7d4b2a7a6c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+}
+
+/* Background image with blur */
+/* Hero Section */
+header {
+  position: relative;
+  min-height: 88vh;
+  display: grid;
+  align-items: center;
+  color: white;
+  padding: 8rem 0 6rem;
+  overflow: hidden;
+  background: none; /* remove gradients */
+}
+
+/* Laptop image blurred as background */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?auto=format&fit=crop&w=1600&q=80')
+    center/cover no-repeat;
+  filter: blur(14px) brightness(0.65);
+  transform: scale(1.08); /* fixes edge cutoff from blur */
+  z-index: -2;
+}
+
+/* Dark overlay for better text contrast */
+header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  z-index: -1;
+}
+
+
     header h1 { font-weight: 700; letter-spacing: -0.5px; }
     .hero-card{
       background: rgba(255,255,255,0.06);
@@ -326,31 +350,36 @@
 
   <main class="flex-shrink-0">
 
-    <!-- Hero -->
-    <header class="text-center text-lg-start">
-      <div class="container px-3 px-md-4 position-relative">
-        <div class="row align-items-center gy-5">
-          <div class="col-lg-7" data-animate>
-            <div class="hero-card mb-3">
-              <i class="bi bi-lightning-charge-fill"></i>
-              <span class="small">Virtual Assistant • Coach Administrative Associate • Course Creator Designer  </span>
-            </div>
-            <h1 class="display-4 fw-bold mb-3">Delegate the details.<br>Focus on growing your business.</h1>
-            <p class="lead mb-4">
-              I take care of the tasks that drain your time so you can stay focused on clients, growth, and strategy.
-            </p>
-            <a class="btn btn-primary btn-lg px-4" href="https://calendly.com/ricaldesara/connect">Book a Free Call</a>
-          </div>
-          <div class="col-lg-5 text-center mt-2 mt-lg-0" data-animate>
-            <picture>
-              <source srcset="https://images.unsplash.com/photo-1604882351680-659c06a4b12f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" media="(min-width: 992px)">
-              <img class="img-fluid rounded-3 shadow" src="https://images.unsplash.com/photo-1604882351680-659c06a4b12f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                alt="Virtual Assistant Portrait" loading="eager" decoding="async" style="max-width: 520px; width: 100%; object-fit: cover;">
-            </picture>
-          </div>
+<header class="text-center text-lg-start">
+  <div class="container px-3 px-md-4 position-relative">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-7" data-animate>
+        <div class="hero-card mb-3">
+          <i class="bi bi-lightning-charge-fill"></i>
+          <span class="small">Virtual Assistant • Coach Administrative Associate • Course Creator Designer</span>
         </div>
+        <h1 class="display-4 fw-bold mb-3">
+          Delegate the details.<br>Focus on growing your business.
+        </h1>
+        <p class="lead mb-4">
+          I take care of the tasks that drain your time so you can stay focused on clients, growth, and strategy.
+        </p>
+        <a class="btn btn-primary btn-lg px-4" href="https://calendly.com/ricaldesara/connect">Book a Free Call</a>
       </div>
-    </header>
+
+      <div class="col-lg-5 text-center mt-2 mt-lg-0" data-animate>
+        <img 
+          src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?auto=format&fit=crop&w=800&q=80" 
+          alt="Modern laptop workspace"
+          class="img-fluid rounded-3 shadow"
+          style="max-width: 520px; width: 100%; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
 
     <!-- About -->
     <section id="about">
@@ -358,11 +387,17 @@
         <div class="row align-items-center gy-5">
           <div class="col-lg-5 text-center" data-animate>
             <div class="about-wrap">
-              <picture>
-                <source srcset="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" media="(min-width: 992px)">
-                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                  alt="About Sarah" class="about-img" loading="lazy" decoding="async">
-              </picture>
+<picture>
+  <source srcset="https://cdn-icons-png.flaticon.com/512/149/149071.png" media="(min-width: 992px)">
+  <img 
+    src="https://cdn-icons-png.flaticon.com/512/149/149071.png" 
+    alt="Anonymous profile picture" 
+    class="about-img" 
+    loading="lazy" 
+    decoding="async">
+</picture>
+
+
             </div>
           </div>
           <div class="col-lg-7" data-animate>
