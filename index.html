@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Delegate tasks and grow your business with Sarah Ricalde, Virtual Assistant." />
+  <meta name="author" content="Sarah Ricalde" />
+  <title>Sarah Ricalde</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+  <!-- Preconnects for perf -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1573497019511-7d4b2a7a6c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" imagesrcset="https://images.unsplash.com/photo-1573497019511-7d4b2a7a6c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80 900w, https://images.unsplash.com/photo-1573497019511-7d4b2a7a6c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80 1600w" imagesizes="100vw" />
+
+  <!-- Bootstrap CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --primary: #4f46e5;
+      --primary-2: #3b82f6;
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.10);
+      --radius-xl: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(2, 6, 23, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .navbar .nav-link {
+      position: relative;
+    }
+    .navbar .nav-link.active::after,
+    .navbar .nav-link:hover::after{
+      content:"";
+      position:absolute; left:0; right:0; bottom:-6px; height:2px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+      border-radius: 2px;
+    }
+
+    /* Hero Section */
+    header {
+      position: relative;
+      min-height: 88vh;
+      display: grid;
+      align-items: center;
+      color: white;
+      padding: 8rem 0 6rem;
+      overflow: clip;
+      background:
+        radial-gradient(1200px 600px at -10% -20%, rgba(79,70,229,0.35), transparent 60%),
+        radial-gradient(1000px 480px at 110% 20%, rgba(59,130,246,0.35), transparent 55%),
+        linear-gradient(rgba(15,23,42,0.55), rgba(15,23,42,0.55)),
+        url('https://images.unsplash.com/photo-1573497019511-7d4b2a7a6c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    }
+    /* subtle shapes */
+    header::before, header::after{
+      content:"";
+      position:absolute; inset: -20%;
+      background: radial-gradient(closest-side, rgba(255,255,255,0.09), transparent);
+      filter: blur(40px);
+      transform: rotate(8deg);
+      pointer-events: none;
+    }
+    header::after{
+      transform: rotate(-12deg);
+      opacity: .7;
+    }
+    header h1 { font-weight: 700; letter-spacing: -0.5px; }
+    .hero-card{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 1rem 1.25rem;
+      display: inline-flex;
+      gap: .6rem;
+      align-items: center;
+      backdrop-filter: blur(6px);
+    }
+    .hero-card i{ font-size: 1.1rem; }
+
+    /* Section Styling */
+    section { padding: 5rem 0; scroll-margin-top: 100px; }
+    section:nth-of-type(even) { background: #f8fafc; }
+
+    /* Section titles */
+    h2 {
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      position: relative;
+      display: inline-block;
+    }
+    h2::after{
+      content:"";
+      display:block;
+      width: 60%;
+      height: 4px;
+      margin-top: .5rem;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+      border-radius: 999px;
+    }
+
+    /* Cards */
+    .card {
+      border: 1px solid #e5e7eb;
+      border-radius: var(--radius-xl);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color .35s ease;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(2,6,23,.12);
+      border-color: rgba(79,70,229,0.3);
+    }
+    .card-img-top{
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+
+    /* Numbers */
+    .stat {
+      display: grid;
+      gap: .2rem;
+      place-items: center;
+      padding: 1.6rem 1rem;
+    }
+    .stat h3{
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+      font-weight: 800;
+      margin: 0;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent;
+    }
+    .stat p{ color: var(--muted); margin: 0; }
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+      border: none;
+      border-radius: 12px;
+      padding: .75rem 1.25rem;
+      box-shadow: 0 10px 24px rgba(59,130,246,0.25);
+      transition: transform .15s ease, box-shadow .25s ease, filter .25s ease;
+    }
+    .btn-primary:hover { filter: brightness(1.05); transform: translateY(-1px); }
+
+    /* Animation */
+    [data-animate]{
+      opacity: 0; transform: translateY(26px) scale(.98);
+      transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+    [data-animate].visible{ opacity: 1; transform: translateY(0) scale(1); }
+
+    /* About image ring */
+    .about-wrap{
+      position: relative; display: inline-block;
+      border-radius: 999px; isolation: isolate;
+    }
+    .about-wrap::after{
+      content:""; position:absolute; inset:-8px;
+      background: conic-gradient(from 180deg, var(--primary), var(--primary-2), var(--primary));
+      border-radius: 999px; z-index: -1; filter: blur(8px); opacity: .25;
+    }
+    .about-img {
+      max-width: 360px; width: 100%;
+      border: 5px solid white; border-radius: 999px;
+      box-shadow: 0 18px 50px rgba(2,6,23,.18);
+    }
+
+    /* Testimonials */
+    .testimonial{ font-style: italic; color: #475569; }
+    .quote-mark{
+      font-size: 2rem; line-height: 1; opacity: .22;
+    }
+
+    /* Footer */
+    footer { background: #0b1020; color: #94a3b8; }
+    footer a { color: #cbd5e1; text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* Back to top (icon-only, no visible text) */
+    #backToTop{
+      position: fixed; right: 18px; bottom: 18px; z-index: 1040;
+      width: 46px; height: 46px; border-radius: 999px; border: none;
+      display: grid; place-items: center; cursor: pointer;
+      background: rgba(15,23,42,.9); color: #fff;
+      box-shadow: 0 10px 24px rgba(2,6,23,.35);
+      opacity: 0; visibility: hidden; transform: translateY(12px);
+      transition: opacity .25s, transform .25s, visibility .25s;
+    }
+    #backToTop.show{ opacity: 1; visibility: visible; transform: translateY(0); }
+
+    /* Responsive helpers */
+    @media (max-width: 991.98px){
+      header{ min-height: 76vh; padding-top: 7rem; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ transition: none !important; scroll-behavior: auto; }
+      [data-animate]{ opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+
+ <style>/*videos*/
+  /* Coaches Grid */
+  .coaches-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .coach-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Video Styling */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-top: 1rem;
+  }
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Responsive for mobile */
+  @media (max-width: 768px) {
+    .coaches-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<style>/*skillsets*/
+  .systems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .systems-grid img {
+    max-height: 60px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  .systems-grid img:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    .systems-grid {
+      gap: 1.5rem;
+    }
+  }
+</style>
+
+
+</head>
+<body class="d-flex flex-column h-100" data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="90" tabindex="0">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+    <div class="container px-3 px-md-4">
+      <a class="navbar-brand fw-bold" href="#">Sarah Ricalde</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="btn btn-primary ms-lg-3 mt-3 mt-lg-0" href="#book-call">Book Call</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-shrink-0">
+
+    <!-- Hero -->
+    <header class="text-center text-lg-start">
+      <div class="container px-3 px-md-4 position-relative">
+        <div class="row align-items-center gy-5">
+          <div class="col-lg-7" data-animate>
+            <div class="hero-card mb-3">
+              <i class="bi bi-lightning-charge-fill"></i>
+              <span class="small">Virtual Assistant • Coach Administrative Associate • Course Creator Designer  </span>
+            </div>
+            <h1 class="display-4 fw-bold mb-3">Delegate the details.<br>Focus on growing your business.</h1>
+            <p class="lead mb-4">
+              I take care of the tasks that drain your time so you can stay focused on clients, growth, and strategy.
+            </p>
+            <a class="btn btn-primary btn-lg px-4" href="#services">Book a Free Call</a>
+          </div>
+          <div class="col-lg-5 text-center mt-2 mt-lg-0" data-animate>
+            <picture>
+              <source srcset="https://images.unsplash.com/photo-1604882351680-659c06a4b12f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" media="(min-width: 992px)">
+              <img class="img-fluid rounded-3 shadow" src="https://images.unsplash.com/photo-1604882351680-659c06a4b12f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Virtual Assistant Portrait" loading="eager" decoding="async" style="max-width: 520px; width: 100%; object-fit: cover;">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container px-3 px-md-4">
+        <div class="row align-items-center gy-5">
+          <div class="col-lg-5 text-center" data-animate>
+            <div class="about-wrap">
+              <picture>
+                <source srcset="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" media="(min-width: 992px)">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  alt="About Sarah" class="about-img" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </div>
+          <div class="col-lg-7" data-animate>
+            <h2 class="fw-bold mb-4">About Me</h2>
+            <p class="lead">Running a business doesn’t mean doing everything yourself. The more you juggle, the less space you have for growth. That’s where I come in.</p>
+            <p>I’m here so you can delegate the tasks that slow you down — content, podcasts, invoices, systems, scheduling, and more. My role is to keep the day-to-day details moving, while you stay focused on clients, strategy, and growth.</p>
+            <p>When you delegate, you gain back hours each week, lower your stress, and create room for your business to expand.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Numbers -->
+    <section class="bg-light text-center">
+      <div class="container px-3 px-md-4">
+        <h2 class="fw-bold mb-4">By the Numbers</h2>
+        <p class="lead mb-5">Delegating to a Virtual Assistant doesn’t just save time — it drives results:</p>
+        <div class="row g-4">
+          <div class="col-sm-6 col-md-3" data-animate>
+            <div class="card border-0">
+              <div class="stat">
+                <h3>10–15</h3>
+                <p>hours saved weekly</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3" data-animate>
+            <div class="card border-0">
+              <div class="stat">
+                <h3>78%</h3>
+                <p>lower cost than hiring</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3" data-animate>
+            <div class="card border-0">
+              <div class="stat">
+                <h3>13%</h3>
+                <p>boost in productivity</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3" data-animate>
+            <div class="card border-0">
+              <div class="stat">
+                <h3>50%</h3>
+                <p>lower turnover with VA support</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container px-3 px-md-4">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold">What You Can Delegate to Me</h2>
+          <p class="lead">Free up your time and focus on growth while I handle the details.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4" data-animate>
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Content and Marketing" loading="lazy" decoding="async">
+              <div class="card-body">
+                <h4 class="fw-bold text-primary mb-3"><i class="bi bi-megaphone"></i> Content & Marketing</h4>
+                <ul class="list-unstyled mb-0">
+                  <li>Instagram content</li>
+                  <li>Podcast support</li>
+                  <li>Email marketing</li>
+                  <li>Graphics & PDFs</li>
+                  <li>Landing pages</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-animate>
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Operations and Systems" loading="lazy" decoding="async">
+              <div class="card-body">
+                <h4 class="fw-bold text-success mb-3"><i class="bi bi-gear"></i> Operations & Systems</h4>
+                <ul class="list-unstyled mb-0">
+                  <li>Client onboarding</li>
+                  <li>Payments & invoices</li>
+                  <li>Automations</li>
+                  <li>Workflow setup</li>
+                  <li>Data management</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-animate>
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Admin and Support" loading="lazy" decoding="async">
+              <div class="card-body">
+                <h4 class="fw-bold text-danger mb-3"><i class="bi bi-person-lines-fill"></i> Admin & Support</h4>
+                <ul class="list-unstyled mb-0">
+                  <li>Calendar & inbox</li>
+                  <li>Lead organization</li>
+                  <li>Research</li>
+                  <li>Travel planning</li>
+                  <li>Event coordination</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="systems" class="py-16 bg-white">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-12">Systems &amp; Proficiencies</h2>
+    
+    <div class="systems-grid">
+<img src="https://cdn.worldvectorlogo.com/logos/asana-1.svg" alt="Asana" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Monday.com_logo.png" alt="Monday.com" />
+<img src="https://cdn.worldvectorlogo.com/logos/trello.svg" alt="Trello" />
+<img src="https://upload.wikimedia.org/wikipedia/en/5/5b/Mailchimp_Logo_2018.svg" alt="Mailchimp" />
+<img src="https://seeklogo.com/images/M/mailerlite-logo-FA94C19C18-seeklogo.com.png" alt="MailerLite" />
+<img src="https://cdn.worldvectorlogo.com/logos/squarespace.svg" alt="Squarespace" />
+<img src="https://seeklogo.com/images/K/kajabi-logo-1090BCF05A-seeklogo.com.png" alt="Kajabi" />
+<img src="https://cdn.worldvectorlogo.com/logos/vimeo-icon.svg" alt="Vimeo" />
+<img src="https://seeklogo.com/images/F/filmora-logo-B2B28DB634-seeklogo.com.png" alt="Filmora" />
+<img src="https://seeklogo.com/images/C/canva-logo-500x500-B4BE7C5B50-seeklogo.com.png" alt="Canva" />
+<img src="https://cdn.worldvectorlogo.com/logos/google-g-2015.svg" alt="Google Workspace" />
+<img src="https://cdn.worldvectorlogo.com/logos/zapier.svg" alt="Zapier" />
+
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<section id="coaches" class="py-12 bg-gray-100">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-12">What my clients say about my work...</h2>
+    
+    <div class="coaches-grid">
+      <!-- Voy Wiacek -->
+      <div class="coach-card">
+        <h3 class="text-xl font-semibold">Voy Wiacek</h3>
+        <p class="mb-4">Men’s Life Coach</p>
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/aexzpepI5uU" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Brian Jenkins -->
+      <div class="coach-card">
+        <h3 class="text-xl font-semibold">Brian Jenkins</h3>
+        <p class="mb-4">Self Mastery and Leadership Coach</p>
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/mSQcTkoPf1E" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- CTA -->
+    <section id="book-call" class="text-center text-white" style="background: linear-gradient(to right, #4f46e5, #3b82f6);">
+      <div class="container px-3 px-md-4 py-5">
+        <h2 class="fw-bold mb-4">Ready to delegate and grow your business?</h2>
+        <a href="#!" class="btn btn-light btn-lg fw-bold">Book a Free Call</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 mt-auto">
+    <div class="container px-3 px-md-4">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <p class="small mb-0">&copy; SarahRicalde 2025</p>
+        </div>
+        <div class="col-auto">
+          <a href="#!">Privacy</a> · <a href="#!">Terms</a> · <a href="#!">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top (icon only) -->
+  <button id="backToTop" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // IntersectionObserver reveal
+    (function(){
+      const els = document.querySelectorAll('[data-animate]');
+      if(!('IntersectionObserver' in window)){ els.forEach(el=>el.classList.add('visible')); return; }
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+      els.forEach(el=>io.observe(el));
+    })();
+
+    // ScrollSpy init (highlights nav as you scroll)
+    const scrollSpy = new bootstrap.ScrollSpy(document.body, {
+      target: '#navbarNav',
+      offset: 90
+    });
+
+    // Back to top
+    (function(){
+      const btn = document.getElementById('backToTop');
+      const toggle = () => {
+        if(window.scrollY > 400){ btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+      };
+      window.addEventListener('scroll', toggle, { passive: true });
+      toggle();
+      btn.addEventListener('click', ()=> window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+  </script>
+</body>
+</html>
